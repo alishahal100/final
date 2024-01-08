@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Headland+One&family=Poppins:wght@100&display=swap');
+
+
+
+
+@font-face {
+    font-family: "poppins-extralight";
+    src: url('./poppins.ttf');
+  }
+
+  /* Base styles */
+.footer {
+    position: relative;
+    width: 100%;
+    font-family: "Poppins-ExtraLight",Helvetica;
+    margin-top: 50px;
+    color: #e4d48c;
+    padding-bottom: 20px;
+  }
+  
+  .line{
+    border: 1px solid #e4d48c;
+    margin-top: 55px;
+  }
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #1BAD4B;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .content {
+    position: relative;
+    width: 100%;
+    padding: 2rem;
+    color: #e4d48c;
+    font-family: 'gilroy-regular';
+  }
+
+  .right{
+    color: beige;
+    font-family: 'gilroy-regular';
+  }
+  
+  
+  
+  
+  .contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .social{
+    color: #e4d48c;
+    
+  }
+  
+  .twitter {
+    /* Styling for the email */
+    height: 18px;
+    width: 18px;
+  }
+  
+  .phone {
+    /* Styling for the phone number */
+    font-size: 1.2rem;
+  }
+  
+  /* Add responsive styles here using media queries */
+  @media (max-width: 768px) {
+    .content {
+      /* Adjust styling for smaller screens */
+    }
+  }
+  
+  /* Add more media queries as needed for different screen sizes */
+  
+  .bottom {
+    /* Styling for the bottom section */
+    text-align: center;
+    font-size: 1.2rem;
+  }
+  
+  .icon {
+    /* Styling for icons */
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .divider {
+    /* Styling for dividers */
+    border-top: 1px solid palegoldenrod;
+    margin: 1rem 0;
+  }
+
+  
+  
+
+  
