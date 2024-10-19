@@ -1,8 +1,13 @@
 
 
 body{
-  background: #1E1C1C;
+  background: black;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  overflow-y: scroll;
+}
+body::-webkit-scrollbar{
+  width: 0;
+  display: none;
 }
 .layer {
   height: 47px;

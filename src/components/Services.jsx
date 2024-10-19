@@ -1,379 +1,256 @@
-import React, { useRef, useEffect } from "react";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import gsap from "gsap";
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import "./css/font.css";
+import { Helmet } from "react-helmet-async";
 
-const Services = () => {
-  const ballRef = useRef(null);
-  const controls = useAnimation();
+gsap.registerPlugin(ScrollTrigger);
 
-  const [defineref, defineinView] = useInView({
-    triggerOnce: true,
-  });
+const Section = ({
+  title,
+  description,
+  imgSrc,
+  reverse,
+  content1,
+  content2,
+  content3,
+}) => {
+  const sectionRef = useRef(null);
 
-  const [energizeref, energizeinView] = useInView({
-    triggerOnce: true,
-  });
-
-  const [captureref, captureinView] = useInView({
-    triggerOnce: true,
-  });
-
-  const [webref, webinView] = useInView({
-    triggerOnce: true,
-  });
-  const [craftref, craftinView] = useInView({
-    triggerOnce: true,
-  });
-
-  const containerVariants = {
-    hidden: { opacity: 0, x: "-100vw" },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.8, ease: "easeInOut" },
-    },
-  };
-
-  const sentencesVariants = {
-    hidden: { opacity: 0, x: "-100vw" },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 1.2, ease: "easeInOut" },
-    },
-  };
-
-  const imageVariants = {
-    hidden: { opacity: 0, x: "100vw" },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 1.1, ease: "easeInOut" },
-    },
-  };
-
-  const ballVariants = {
-    hidden: { opacity: 1, y: "-100vh" },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: "power2.out" },
-    },
-  };
-
-  const ballAnimation = () => {
-    controls.start("visible");
-  };
-
-  const containerVariantsEnergize = {
-    hidden: { opacity: 0, x: "-100vw" },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.8, ease: "easeInOut" },
-    },
-  };
-
-  const sentencesVariantsEnergize = {
-    hidden: { opacity: 0, x: "100vw" },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 1.2, ease: "easeInOut" },
-    },
-  };
-
-  const imageVariantsEnergize = {
-    hidden: { opacity: 0, x: "-100vw" },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 1.1, ease: "easeInOut" },
-    },
-  };
-
-  const textVariantsCapture = {
-    hidden: { opacity: 0, x: "-100vw" },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 1.2, ease: "easeInOut" },
-    },
-  };
-
-  const imageVariantsCapture = {
-    hidden: { opacity: 0, x: "100vw" },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 1.1, ease: "easeInOut" },
-    },
-  };
-
-  const containerVariantsWeb = {
-    hidden: { opacity: 0, x: "-100vw" },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.8, ease: "easeInOut" },
-    },
-  };
-
-  const sentencesVariantsWeb = {
-    hidden: { opacity: 0, x: "100vw" },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 1.2, ease: "easeInOut" },
-    },
-  };
-
-  const imageVariantsWeb = {
-    hidden: { opacity: 0, x: "-100vw" },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 1.1, ease: "easeInOut" },
-    },
-  };
-
-  const containerVariantsCraft = {
-    hidden: { opacity: 0, x: "-100vw" },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.8, ease: "easeInOut" },
-    },
-  };
-
-  const textVariantsCraft = {
-    hidden: { opacity: 0, x: "-100vw" },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 1.2, ease: "easeInOut" },
-    },
-  };
-
-  const imageVariantsCraft = {
-    hidden: { opacity: 0, x: "100vw" },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 1.1, ease: "easeInOut" },
-    },
-  };
-
-  // useEffect(() => {
-  //   // Ensure ScrollTrigger is installed
-  //   if (typeof window !== "undefined") {
-  //     gsap.registerPlugin(ScrollTrigger);
-
-  //     // Define the GSAP ScrollTrigger animation for the ball
-  //     gsap.to(ballRef.current, {
-  //       opacity: 1,
-  //       y: "50%", // Adjust the y value to control how far down the ball goes
-  //       ease: "power2.out",
-  //       scrollTrigger: {
-  //         trigger: ref.current,
-  //         start: "top 80%", // Adjust the trigger start position as needed
-  //         endTrigger: ".container", // Define the end trigger as the container of "Define"
-  //         end: "top 20%", // Adjust the trigger end position as needed
-  //         toggleActions: "play none none none", // Play the animation when in view
-  //       },
-  //     });
-  //   }
-  // }, [ref]);
+  useEffect(() => {
+    const element = sectionRef.current;
+    gsap.fromTo(
+      element.querySelector(".text"),
+      { x: reverse ? 200 : -200, opacity: 0 },
+      {
+        x: 0,
+        opacity: 1,
+        scrollTrigger: {
+          trigger: element,
+          start: "bottom 90%", // triggers when this point reaches 80% from the top of the viewport
+          end: "top 20%",
+          scrub: 1,
+        },
+      }
+    );
+    gsap.fromTo(
+      element.querySelector(".image"),
+      { x: reverse ? -200 : 200, opacity: 0 },
+      {
+        x: 0,
+        opacity: 1,
+        scrollTrigger: {
+          trigger: element,
+          start: "bottom 90%",
+          end: "top 20%",
+          scrub: 1,
+        },
+      }
+    );
+  }, [reverse]);
 
   return (
-    <>
-      <div className="mt-48 left-[calc(50% - 630px)] ml-auto mr-auto rounded-31xl box-border w-[1000px] h-[600px] border-[5px] border-solid border-palegoldenrod-100 flex justify-center align-center ">
-        <div className="group-icon">
-          {/* <motion.div
-            ref={ballRef}
-            initial="hidden"
-            animate={controls}
-            variants={ballVariants}
-            onAnimationStart={ballAnimation}
-            style={{
-              position: "fixed",
-              width: "60px",
-              height: "60px",
-              borderRadius: "50%",
-              backgroundColor: "#e4d48c",
-              zIndex: 1,
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-            }}
-          /> */}
+    <div
+      ref={sectionRef}
+      className={`flex px-20 ${
+        reverse ? "flex-row-reverse" : "flex-row"
+      } w-screen mt-20 justify-center gap-10 items-center my-32 text-[#e4d48c]`}
+    >
+      <div
+        className={`flex text ${
+          reverse ? "flex-row-reverse text-end px-10" : "flex-row"
+        }`}
+      >
+        <div className={`${reverse ? " mt-7 ml-8" : ""}`}>
+          <h1 className="text-9xl tracking-tightest tracking-tightest">
+            {title}
+          </h1>
+          <p className="text-3xl  ml-1.5 font  tracking-normal">
+            {description}
+          </p>
+        </div>
+        <div className="ml-10">
+          <p className="text-2xl font mt-10">{content1}</p>
+          <p className="text-2xl font ">{content2}</p>
+          <p className="text-2xl font ">{content3}</p>
+        </div>
+      </div>
+      <img src={imgSrc} alt={title} className="image w-[30vw] h-[60vh]" />
+    </div>
+  );
+};
+
+const Services = () => {
+  return (
+    <div className="w-screen mt-10 overflow-hidden">
+      <Helmet>
+        <title>Shabzalio - Services</title>
+        <meta
+          name="description"
+          content="Discover Shabzalio's comprehensive range of services including branding, digital services, media services, web development, and printing services."
+        />
+      </Helmet>
+
+      <div className="hidden lg:flex w-full flex-col justify-center align-center">
+        <div className="lg:w-[70vw] lg:h-[60vh] w-[80vw] h-[20vh] rounded-3xl border-[7px] mx-auto border-[#e4d48c] lg:border-none lg:bg-[url('/Layer.jpg')] bg-cover bg-center">
           <img
-            className="mb-20 w-[518.68px] h-[367.3px] "
-            alt=""
             src="/group.svg"
-            style={{ position: "relative", zIndex: -1, marginBottom: "200px" }}
+            className="w-[30vw] -mt-5 h-[20vh] lg:w-[80vw] lg:h-[50vh] mx-auto my-auto"
+            alt="show reel"
           />
         </div>
+
+        {/* Define Section */}
+        <Section
+          title="Define"
+          description="Branding services"
+          content1="what makes you unique"
+          content2="and create a trusted brand"
+          imgSrc="/define.svg"
+          reverse={false}
+        />
+
+        {/* Energize Section */}
+        <Section
+          title="Energize"
+          description="Digital services "
+          content1="through our creative lenses"
+          content2="the power of content and"
+          content3="why your business needs it"
+          imgSrc="/web.png"
+          reverse={true}
+        />
+
+        {/* Capture Section */}
+        <Section
+          title="Capture"
+          description="where stories become art"
+          imgSrc="/capture.svg"
+          content1="Turning stories into visual art"
+          content2="through video and photography"
+          reverse={false}
+        />
+
+        {/* Web Section */}
+        <Section
+          title="Build"
+          description="web development"
+          content1="with us and break new ground"
+          content2="using Optimized web design and web"
+          content3="development for conversion"
+          imgSrc="/energize.svg"
+          reverse={true}
+        />
+
+        <Section
+          title="Capture"
+          description="where stories become art"
+          imgSrc="/capture.svg"
+          content1="Turning stories into visual art"
+          content2="through video and photography"
+          reverse={false}
+        />
       </div>
-      <div ref={defineref}>
-        <motion.div
-          className="container define flex ml-auto mr-auto w-[80%] justify-between"
-          initial="hidden"
-          animate={defineinView ? "visible" : "hidden"}
-          variants={containerVariants}
-        >
-          <motion.div className="write flex w-50 gap-20 md:gap-10">
-            <motion.div
-              className="head mt-auto mb-auto md:ml-10"
-              variants={sentencesVariants}
-            >
-              <h2 className="text-8xl">Define</h2>
-              <h3 className="text-3xl leading-[30px]">branding services</h3>
-            </motion.div>
-            <motion.div
-              className="head2 mt-auto mb-auto"
-              variants={sentencesVariants}
-            >
-              <p className="text-3xl mt-5">
-                what makes you unique <br /> and creates a trusted brand
+      <div>
+        <div className="define lg:hidden gap-10 flex flex-col mt-28 text-[#e4d48c]">
+          <div className="text-center">
+            <h1 className="text-4xl lg:text-8xl">Define</h1>
+            <h3 className="text-xl lg:text-5xl">branding services</h3>
+          </div>
+          <div className="text-center">
+            <img
+              src="/define.svg"
+              alt="Illustration depicting branding services: What makes you unique and creates a trusted brand"
+              className="w-[40vw] h-[30vh] mx-auto"
+            />
+          </div>
+          <div className="text-center">
+            <p className="text-xl lg:text-3xl">
+              what makes you unique <br /> and create a trusted brand
+            </p>
+          </div>
+        </div>
+
+        <div className="energize lg:hidden gap-10 flex flex-col mt-28 text-[#e4d48c]">
+          <div className="text-center">
+            <h1 className="text-4xl lg:text-8xl">Energize</h1>
+            <h3 className="text-xl lg:text-5xl">Digital services</h3>
+          </div>
+          <div className="text-center">
+            <img
+              src="/web.png"
+              alt="Illustration depicting digital services: Through our creative lenses, the power of content and why your business needs it"
+              className="w-[45vw] h-[30vh] mx-auto"
+            />
+          </div>
+          <div className="text-center">
+            <p className="text-xl lg:text-3xl">
+              through our creative lenses <br />
+              the power of content and <br /> why your business needs it
+            </p>
+          </div>
+        </div>
+        <div className="define lg:hidden gap-10 flex flex-col mt-28 text-[#e4d48c]">
+          <div className="text-center">
+            <h1 className="text-4xl lg:text-8xl">capture</h1>
+            <h3 className="text-xl lg:text-5xl">where stories become art</h3>
+          </div>
+          <div className="text-center">
+            <img
+              src="/capture.svg"
+              alt="Illustration depicting the process of capturing stories through video and photography, where stories become art"
+              className="w-[40vw] h-[30vh] mx-auto"
+            />
+          </div>
+          <div className="text-center">
+            <p className="text-xl lg:text-3xl">
+              Turning stories into visual art <br /> through video and
+              photography
+            </p>
+          </div>
+          <div className="web lg:hidden gap-10 flex flex-col mt-28 text-[#e4d48c]">
+            <div className="text-center">
+              <h1 className="text-4xl lg:text-8xl">Build</h1>
+              <h3 className="text-xl lg:text-5xl -mr-3">web development</h3>
+            </div>
+            <div className="text-center">
+              <img
+                src="/energize.svg"
+                alt="Illustration of a dynamic web development process by Shabzalio, showcasing innovative design strategies for achieving optimal user experience and conversion rates"
+                className="w-[40vw] h-[30vh] mx-auto"
+              />
+            </div>
+            <div className="text-center">
+              <p className="text-xl lg:text-3xl">
+                with us and break new ground <br /> using Optimized web design
+                and web <br /> development for conversion
               </p>
-            </motion.div>
-          </motion.div>
-          <motion.div className="img" variants={imageVariants}>
-            <img className=" w-96 h-96" src="/define.svg" alt="" />
-          </motion.div>
-        </motion.div>
+            </div>
+          </div>
+          <div className="define lg:hidden gap-10 flex flex-col mt-28 text-[#e4d48c]">
+            <div className="text-center">
+              <h1 className="text-4xl lg:text-8xl">capture</h1>
+              <h3 className="text-xl lg:text-5xl">where stories become art</h3>
+            </div>
+            <div className="text-center">
+              <img
+                src="/capture.svg"
+                alt="Craft Printing Services: High-Quality Prints Tailored for Your Business and Personal Needs - Precision and Care at Shabzalio"
+                className="w-[40vw] h-[30vh] mx-auto"
+              />
+            </div>
+            <div className="text-center">
+              <p className="text-xl lg:text-3xl">
+                craft is your reliable printing <br /> service dedicated to
+                bringing <br /> your ideas to life with precision <br /> and
+                care. We specialize in high- <br />
+                quality prints for both business <br /> and personal needs
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <section>
-        <div ref={energizeref}>
-          <motion.div
-            initial="hidden"
-            animate={energizeinView ? "visible" : "hidden"}
-            className="energize  flex ml-auto mr-auto  w-[70%] justify-between font-poppins "
-          >
-            <motion.div className="img" variants={imageVariantsEnergize}>
-              <img className="w-96 h-96" src="/energize.svg" alt="" />
-            </motion.div>
-            <motion.div
-              className="write flex w-50 gap-20 md:gap-10"
-              variants={sentencesVariantsEnergize}
-            >
-              <div className="head2 mt-auto mb-auto">
-                <p className="m-0">through our creative lenses</p>
-                <p className="m-0">the power of content and</p>
-                <p className="m-0">why your business needs it</p>{" "}
-              </div>
-              <div className="head mt-auto mb-auto md:ml-10">
-                <h2 className="text-8xl">Energize</h2>
-                <h3 className="text-3xl leading-[30px]">Digital services</h3>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-      <section>
-        <div ref={captureref}>
-          <motion.div
-            initial="hidden"
-            animate={captureinView ? "visible" : "hidden"}
-            //variants={containerVariants}
-            className="container capture flex ml-auto mr-auto w-[70%] justify-between"
-          >
-            <motion.div
-              className="write flex w-50 gap-20 md:gap-10"
-              variants={textVariantsCapture}
-            >
-              <div className="head mt-auto mb-auto md:ml-10">
-                <h2 className="text-8xl">Capture</h2>
-                <h3 className="text-3xl leading-[30px]">
-                  Where Stories Become Art
-                </h3>
-              </div>
-              <div className="head2 mt-auto mb-auto">
-                <div className="absolute text-xl leading-[25px] font-extralight inline-block w-[385px]">
-                  Turning stories into visual art through video and photography.
-                </div>
-              </div>
-            </motion.div>
-            <motion.div className="img" variants={imageVariantsCapture}>
-              <img className="w-96 h-96" src="/capture.svg" alt="" />
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      <section>
-        <div ref={webref}>
-          <motion.div
-            initial="hidden"
-            animate={webinView ? "visible" : "hidden"} // Use inView to trigger animation
-            //  variants={containerVariants}
-            className="container web flex ml-auto mr-auto w-[70%] justify-between font-poppins"
-          >
-            <motion.div className="img" variants={imageVariantsWeb}>
-              <img className="w-96 h-96" src="/energize.svg" alt="" />
-            </motion.div>
-            <motion.div
-              className="write flex w-50 gap-20 md:gap-10"
-              variants={sentencesVariantsWeb}
-            >
-              <div className="head2 mt-auto mb-auto">
-                <p className="m-0">WITH US AND BREAK NEW GROUND</p>
-                <p className="m-0">Using Optimized Web Design And Web</p>
-                <p className="m-0">Development For Conversion</p>{" "}
-              </div>
-              <div className="head mt-auto mb-auto md:ml-10">
-                <h2 className="text-8xl ">Build</h2>
-                <h3 className="text-3xl  leading-[30px] ">web development</h3>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-      <section>
-        <div ref={craftref}>
-          <motion.div
-            initial="hidden"
-            animate={craftinView ? "visible" : "hidden"}
-            //variants={containerVariants}
-            className="container craft flex ml-auto mr-auto w-[70%] justify-between"
-          >
-            <motion.div
-              className="write flex w-50 gap-20 md:gap-10"
-              variants={textVariantsCraft}
-            >
-              <div className="head mt-auto mb-auto md:ml-10">
-                <h2 className="text-8xl ">Craft</h2>
-                <h3 className="text-3xl  leading-[30px] ">
-                  bringing Your Ideas to Life
-                </h3>
-              </div>
-              <div className="head2 mt-auto mb-auto">
-                <p className="text-l">
-                  Craft is your reliable printing service,{" "}
-                </p>
-                <p className="text-l">
-                  dedicated to bringing your ideas to life{" "}
-                </p>
-                <p className="text-l">
-                  with precision and care. We specialize in{" "}
-                </p>
-                <p className="text-l">
-                  high-quality prints for both business and{" "}
-                </p>
-                <p className="text-l">personal needs. </p>
-              </div>
-            </motion.div>
-            <motion.div className="img" variants={imageVariantsCraft}>
-              <img className="w-96 h-96" src="/craft.svg" alt="" />
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-    </>
+    </div>
   );
 };
 

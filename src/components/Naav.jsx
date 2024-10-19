@@ -1,110 +1,35 @@
-import React, { useState, useEffect } from "react";
-import {
-  Navbar,
-  MobileNav,
-  Typography,
-  Button,
-  IconButton,
-} from "@material-tailwind/react";
+import React from 'react';
 
-const Navv = (props) => {
-  const [openNav, setOpenNav] = useState(false);
+const Navbar = () => {
+    return (
+        <nav className=" w-screen font-extrabold  top-0 z-50 bg-black sticky h-28 overflow-hidden pb-10">
+            <div className="  flex gap-0 justify-between sm:gap-36  sm:ml-12 text-[#e4d48c] items-center">
+                <div className="flex-shrink-0 left-0">
+                    <img src='/logo.svg' alt='logo' className='ml-10 w-20 h-20  sm:w-36 sm:h-36 ' />
+                </div>
+                <div className="hidden lg:block ml-auto mr-auto font-extrabold">
+                    <ul className="flex space-x-4">
+                        <li><a href="/" >Home</a></li>
+                        <li><a href="/portfolio" >Portfolio</a></li>
+                        <li><a href="" >Services</a></li>
+                        <li><a target='_blank' href="/servicebefore" >service before</a></li>
+                    </ul>
+                </div>
+                <div className=' right-2'>
+                    <a href="https://wa.me/917510622616">
+                    <button className="hidden lg:block  border border-[#e4d48c] w-44 h-12 text-white-800 px-4 py-2 rounded">Contact Us</button>
+                    </a>
+                </div>
+                <div>
+                    <a href="/portfolio">
 
-  useEffect(() => {
-    window.addEventListener(
-      "resize",
-      () => window.innerWidth >= 960 && setOpenNav(false)
+                    <button className=" lg:hidden  text-[#e4d48c] border border-[#e4d48c] px-4 py-2 mr-5 rounded">portfolio</button>
+                    </a>
+                </div>
+            </div>
+        </nav>
     );
-  }, []);
-
-  const navList = (
-    <ul
-      className="mb-4 mt-3 ml-3 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6"
-      style={{ fontFamily: "gilroy-semibold",color:"#E4D48C" }}
-    >
-      <Typography as="li" variant="small" className="p-1 font-normal">
-        <a href="#" className="flex items-center">
-          portfolio
-        </a>
-      </Typography>
-      <Typography as="li" variant="small" className="p-1 font-normal">
-        <a href="#" className="flex items-center">
-          menu
-        </a>
-      </Typography>
-      <Typography as="li" variant="small" className="p-1 font-normal">
-        <a href="#" className="flex items-center">
-          services
-        </a>
-      </Typography>
-    </ul>
-  );
-
-  return (
-    <div className=" pt-16 max-h-[768px] max-w-full overflow-hidden">
-      <Navbar className="sticky top-0 fixed z-10 ml-3 border-none h-max max-w-full rounded-none py-2 px-4 lg:px-8 lg:py-4 bg-[#1E1C1C]">
-        <div className="flex items-center justify-around  text-blue-gray-900">
-          <div className="layer">
-            <img className="group-layer" alt="Group layer" src="/first.png" />
-            <img className="img" alt="Group layer" src="/second.png" />
-          </div>
-          <div className="mr-4 hidden lg:block">{navList}</div>
-          <div className="flex items-center gap-4">
-            <Button
-              
-              size="sm"
-              className="hidden lg:inline-block border border-[#E4D48C] "
-            >
-              <span className="text-[#E4D48C]">contact us</span>
-            </Button>
-            <IconButton
-              variant="text"
-              className="ml-auto mr-5 h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
-              ripple={false}
-              onClick={() => setOpenNav(!openNav)}
-            >
-              {openNav ? (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  className="h-6 w-6"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-              )}
-            </IconButton>
-          </div>
-        </div>
-        <MobileNav open={openNav}>
-          {navList}
-          <Button variant="gradient" size="sm" fullWidth className="mb-2">
-            <span>Login</span>
-          </Button>
-        </MobileNav>
-      </Navbar>
-    </div>
-  );
 };
 
-export default Navv;
+export default Navbar;
+

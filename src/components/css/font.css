@@ -1,0 +1,26 @@
+@font-face {
+    font-family: 'Gilroy';
+    src: url('/Fonts/Gilroy.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  
+
+.w-screen{
+    font-family: 'Gilroy';
+}
+.about{
+  font-weight: 900;
+}
+
+        /* Define a custom class with tighter letter spacing */
+        .tracking-tightest {
+            letter-spacing: -0.1em; /* Adjust the value to make it even tighter */
+        }
+   .font{
+    font-weight: 600;
+   }
+   .bannerfont{
+    font-weight: 600;
+   }
