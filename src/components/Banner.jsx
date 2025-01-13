@@ -23,13 +23,13 @@ const Banner = () => {
       };
    
   return (
-    <div className=" relative w-screen  lg:-mt-60 ">
+    <div className=" relative w-screen  lg:-mt-44 ">
       <div className="container mx-auto flex flex-col  items-center justify-between">
         <div className="flex items-center mb-6 lg:mb-0 z-10" >
           <div className="mr-4">
             <img
               src="/hero.png"
-              className=" lg:w-[1800px] lg:h-[900px]"
+              className=" lg:w-[1100px] lg:h-[800px]"
               alt="Hero Image"
               loading="lazy"
             />

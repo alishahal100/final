@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./css/font.css";
@@ -27,7 +27,7 @@ const Section = ({
         opacity: 1,
         scrollTrigger: {
           trigger: element,
-          start: "bottom 90%", // triggers when this point reaches 80% from the top of the viewport
+          start: "bottom 130%", // triggers when this point reaches 80% from the top of the viewport
           end: "top 20%",
           scrub: 1,
         },
@@ -41,7 +41,7 @@ const Section = ({
         opacity: 1,
         scrollTrigger: {
           trigger: element,
-          start: "bottom 90%",
+          start: "bottom 130%",
           end: "top 20%",
           scrub: 1,
         },
@@ -81,6 +81,15 @@ const Section = ({
 };
 
 const Services = () => {
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+
+  const handleShowReelClick = () => {
+    setIsVideoPlaying(true);
+  };
+
+  const handleVideoClose = () => {
+    setIsVideoPlaying(false);
+  };
   return (
     <div className="w-screen mt-10 overflow-hidden">
       <Helmet>
@@ -92,12 +101,29 @@ const Services = () => {
       </Helmet>
 
       <div className="hidden lg:flex w-full flex-col justify-center align-center">
-        <div className="lg:w-[70vw] lg:h-[60vh] w-[80vw] h-[20vh] rounded-3xl border-[7px] mx-auto border-[#e4d48c] lg:border-none lg:bg-[url('/Layer.jpg')] bg-cover bg-center">
+        <div
+          className="lg:w-[70vw] lg:h-[60vh] w-[80vw] h-[20vh] rounded-3xl border-[7px] mx-auto border-[#e4d48c] lg:border-none lg:bg-[url('/Layer.jpg')] bg-cover bg-center"
+          onClick={handleShowReelClick}
+          style={{ position: "relative", cursor: "pointer" }}
+        >
           <img
             src="/group.svg"
             className="w-[30vw] -mt-5 h-[20vh] lg:w-[80vw] lg:h-[50vh] mx-auto my-auto"
             alt="show reel"
           />
+          {isVideoPlaying && (
+            <div
+              className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-black/80 z-10"
+              onClick={handleVideoClose}
+            >
+              <video
+                src="/video/showreel.mp4"
+                controls
+                autoPlay
+                className="w-full h-full rounded-3xl"
+              />
+            </div>
+          )}
         </div>
 
         {/* Define Section */}

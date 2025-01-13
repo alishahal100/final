@@ -9,6 +9,7 @@ import Portfolio from './components/Portfolio';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ScrollAnimation from './components/demo';
 import ServicesBefore from './components/servicesbefore';
+import Contact from './components/Contact';
 
 export default function App() {
   gsap.registerPlugin(ScrollTrigger);
@@ -79,6 +80,7 @@ export default function App() {
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/dev" element={<ScrollAnimation />} />
             <Route path="/servicebefore" element={<ServicesBefore />} />
+            <Route path="/contact" element={<Contact/>} />
           </Routes>
         </Router>
       </HelmetProvider>
