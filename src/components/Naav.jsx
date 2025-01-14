@@ -13,14 +13,14 @@ const Navbar = () => {
                 <div className="hidden lg:block ml-auto mr-auto font-extrabold">
                     <ul className="flex space-x-4">
                         <li><a href="/" >Home</a></li>
-                        <li><a href="/portfolio" >Portfolio</a></li>
+                        <li><a href="https://shabzalio.myportfolio.com" target='_blank' >Portfolio</a></li>
                         <li><a href="/contact" >Contact Us</a></li>
                     </ul>
                 </div>
-                <div className="right-2 relative">
+                <div className="right-2 relative hidden lg:block">
                     <a href="https://wa.me/917510622616" target='_blank' className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#25D366] hover:bg-[#1caa52]">
                         <img src="/whatsapp.svg" alt="WhatsApp" className="w-6 h-6" />
-                        <span className="text-white font-bold">WhatsApp Chat</span>
+                        <span className="text-black font-extrabold">WhatsApp Chat</span>
                     </a>
                 </div>
                 <div>
