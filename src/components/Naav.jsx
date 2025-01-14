@@ -24,7 +24,7 @@ const Navbar = () => {
                     </a>
                 </div>
                 <div>
-                    <a href="/portfolio">
+                    <a href="https://shabzalio.myportfolio.com" target='_blank'>
                         <button className="lg:hidden text-[#e4d48c] border border-[#e4d48c] px-4 py-2 mr-5 rounded">Portfolio</button>
                     </a>
                 </div>
