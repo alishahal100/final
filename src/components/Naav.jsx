@@ -2,7 +2,7 @@ import React from 'react';
 
 const Navbar = () => {
     return (
-        <nav className="w-screen font-extrabold top-0 z-50 pl-10 bg-black sticky h-28 overflow-hidden pb-10">
+        <nav className="w-screen font-extrabold top-0 z-50 lg:pl-10 bg-black sticky h-28 overflow-hidden pb-10">
             <div className="flex gap-0 justify-between sm:gap-36 sm:ml-12 text-[#e4d48c] items-center">
                 <div className="flex-shrink-0 left-0">
                     <a href="/">
