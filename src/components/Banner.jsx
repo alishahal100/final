@@ -45,7 +45,7 @@ const Banner = () => {
           </Canvas>
         </div>
         </div>
-        <div className=" hidden group lg:block w-screen absolute mt-[650px] z-50">
+        <div className=" hidden group lg:block w-screen absolute mt-[650px] z-50 ">
           <div className=" p-6 rounded-lg w-full shadow-lg">
             <div className="flex   text-[#e4d48c] gap-24  justify-center items-center">
               <div classname="flex  flex-col  ">
@@ -73,7 +73,7 @@ const Banner = () => {
             </div>
           </div>
         </div>
-        <div className="  lg:hidden w-screen absolute mt-[350px] z-50">
+        <div className="  lg:hidden w-screen absolute mt-[350px] ">
           <div className=" p-6 rounded-lg shadow-lg">
             <div className="flex flex-col gap-10 px-10 text-[#e4d48c] justify-between items-center">
                 <div className="flex flex-row gap-10">
