@@ -28,7 +28,7 @@ const Navbar = () => {
                 </div>
 
                 {/* Desktop WhatsApp Chat */}
-                <div className="right-2 relative hidden lg:block">
+                {/* <div className="right-2 relative hidden lg:block">
                     <a
                         href="https://wa.me/917510622616"
                         target='_blank'
@@ -37,7 +37,7 @@ const Navbar = () => {
                         <img src="/whatsapp.svg" alt="WhatsApp" className="w-6 h-6" />
                         <span className="text-black font-extrabold">WhatsApp Chat</span>
                     </a>
-                </div>
+                </div> */}
 
                 {/* Mobile Hamburger Icon */}
                 <div className="lg:hidden flex items-center mr-5">
