@@ -23,13 +23,13 @@ const Banner = () => {
       };
    
   return (
-    <div className=" relative w-screen  lg:-mt-44 ">
+    <div className=" relative w-screen -mt-10  lg:-mt-44 ">
       <div className="container mx-auto flex flex-col  items-center justify-between">
         <div className="flex items-center mb-6 lg:mb-0 z-10" >
           <div className="mr-4">
             <img
               src="/hero.png"
-              className=" lg:w-[1100px] lg:h-[800px]"
+              className="w-[600px] lg:w-[1100px] lg:h-[800px]"
               alt="Hero Image"
               loading="lazy"
             />
@@ -45,7 +45,7 @@ const Banner = () => {
           </Canvas>
         </div>
         </div>
-        <div className=" hidden group lg:block w-screen absolute mt-[650px] z-50 ">
+        <div className=" hidden group lg:block w-screen absolute  lg:mt-[650px] z-50 ">
           <div className=" p-6 rounded-lg w-full shadow-lg">
             <div className="flex   text-[#e4d48c] gap-24  justify-center items-center">
               <div classname="flex  flex-col  ">
@@ -73,7 +73,7 @@ const Banner = () => {
             </div>
           </div>
         </div>
-        <div className="  lg:hidden w-screen absolute mt-[350px] ">
+        <div className="  lg:hidden w-screen absolute mt-[230px] md:mt-[360px]  ">
           <div className=" p-6 rounded-lg shadow-lg">
             <div className="flex flex-col gap-10 px-10 text-[#e4d48c] justify-between items-center">
                 <div className="flex flex-row gap-10">
