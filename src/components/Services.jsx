@@ -3,8 +3,15 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./css/font.css";
 import { Helmet } from "react-helmet-async";
+import {motion} from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);
+
+const scrollAnimationVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+};
+
 
 const Section = ({
   title,
@@ -177,105 +184,72 @@ const Services = () => {
           reverse={false}
         />
       </div>
-      <div>
-        <div className="define lg:hidden gap-10 flex flex-col mt-28 text-[#e4d48c]">
-          <div className="text-center">
-            <h1 className="text-4xl lg:text-8xl">Define</h1>
-            <h3 className="text-xl lg:text-5xl">branding services</h3>
-          </div>
-          <div className="text-center">
-            <img
-              src="/define.svg"
-              alt="Illustration depicting branding services: What makes you unique and creates a trusted brand"
-              className="w-[40vw] h-[30vh] mx-auto"
-            />
-          </div>
-          <div className="text-center">
-            <p className="text-xl lg:text-3xl">
-              what makes you unique <br /> and create a trusted brand
-            </p>
-          </div>
-        </div>
-
-        <div className="energize lg:hidden gap-10 flex flex-col mt-28 text-[#e4d48c]">
-          <div className="text-center">
-            <h1 className="text-4xl lg:text-8xl">Energize</h1>
-            <h3 className="text-xl lg:text-5xl">Digital services</h3>
-          </div>
-          <div className="text-center">
-            <img
-              src="/web.png"
-              alt="Illustration depicting digital services: Through our creative lenses, the power of content and why your business needs it"
-              className="w-[45vw] h-[30vh] mx-auto"
-            />
-          </div>
-          <div className="text-center">
-            <p className="text-xl lg:text-3xl">
-              through our creative lenses <br />
-              the power of content and <br /> why your business needs it
-            </p>
-          </div>
-        </div>
-        <div className="define lg:hidden gap-10 flex flex-col mt-28 text-[#e4d48c]">
-          <div className="text-center">
-            <h1 className="text-4xl lg:text-8xl">capture</h1>
-            <h3 className="text-xl lg:text-5xl">where stories become art</h3>
-          </div>
-          <div className="text-center">
-            <img
-              src="/capture.svg"
-              alt="Illustration depicting the process of capturing stories through video and photography, where stories become art"
-              className="w-[40vw] h-[30vh] mx-auto"
-            />
-          </div>
-          <div className="text-center">
-            <p className="text-xl lg:text-3xl">
-              Turning stories into visual art <br /> through video and
-              photography
-            </p>
-          </div>
-          <div className="web lg:hidden gap-10 flex flex-col mt-28 text-[#e4d48c]">
-            <div className="text-center">
-              <h1 className="text-4xl lg:text-8xl">Build</h1>
-              <h3 className="text-xl lg:text-5xl -mr-3">web development</h3>
-            </div>
-            <div className="text-center">
-              <img
-                src="/energize.svg"
-                alt="Illustration of a dynamic web development process by Shabzalio, showcasing innovative design strategies for achieving optimal user experience and conversion rates"
-                className="w-[40vw] h-[30vh] mx-auto"
-              />
-            </div>
-            <div className="text-center">
-              <p className="text-xl lg:text-3xl">
-                with us and break new ground <br /> using Optimized web design
-                and web <br /> development for conversion
-              </p>
-            </div>
-          </div>
-          <div className="define lg:hidden gap-10 flex flex-col mt-28 text-[#e4d48c]">
-            <div className="text-center">
-              <h1 className="text-4xl lg:text-8xl">capture</h1>
-              <h3 className="text-xl lg:text-5xl">where stories become art</h3>
-            </div>
-            <div className="text-center">
-              <img
-                src="/capture.svg"
-                alt="Craft Printing Services: High-Quality Prints Tailored for Your Business and Personal Needs - Precision and Care at Shabzalio"
-                className="w-[40vw] h-[30vh] mx-auto"
-              />
-            </div>
-            <div className="text-center">
-              <p className="text-xl lg:text-3xl">
-                craft is your reliable printing <br /> service dedicated to
-                bringing <br /> your ideas to life with precision <br /> and
-                care. We specialize in high- <br />
-                quality prints for both business <br /> and personal needs
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div className="space-y-28 text-[#e4d48c]">
+      {[
+        {
+          title: "Define",
+          subtitle: "branding services",
+          imgSrc: "/define.svg",
+          imgAlt:
+            "Illustration depicting branding services: What makes you unique and creates a trusted brand",
+          description: "what makes you unique and create a trusted brand",
+        },
+        {
+          title: "Energize",
+          subtitle: "Digital services",
+          imgSrc: "/web.png",
+          imgAlt:
+            "Illustration depicting digital services: Through our creative lenses, the power of content and why your business needs it",
+          description:
+            "through our creative lenses, the power of content and why your business needs it",
+        },
+        {
+          title: "Capture",
+          subtitle: "where stories become art",
+          imgSrc: "/capture.svg",
+          imgAlt:
+            "Illustration depicting the process of capturing stories through video and photography, where stories become art",
+          description:
+            "Turning stories into visual art through video and photography",
+        },
+        {
+          title: "Build",
+          subtitle: "web development",
+          imgSrc: "/energize.svg",
+          imgAlt:
+            "Illustration of a dynamic web development process by Shabzalio, showcasing innovative design strategies for achieving optimal user experience and conversion rates",
+          description:
+            "with us and break new ground using Optimized web design and web development for conversion",
+        },
+        {
+          title: "Craft",
+          subtitle: "your printing partner",
+          imgSrc: "/capture.svg",
+          imgAlt:
+            "Craft Printing Services: High-Quality Prints Tailored for Your Business and Personal Needs - Precision and Care at Shabzalio",
+          description:
+            "craft is your reliable printing service dedicated to bringing your ideas to life with precision and care. We specialize in high-quality prints for both business and personal needs",
+        },
+      ].map(({ title, subtitle, imgSrc, imgAlt, description }, index) => (
+        <motion.div
+          key={title}
+          className="flex flex-col items-center mt-5 px-10 text-center"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+          variants={scrollAnimationVariants}
+        >
+          <h1 className="text-4xl">{title}</h1>
+          <h3 className="text-xl mt-2">{subtitle}</h3>
+          <img
+            src={imgSrc}
+            alt={imgAlt}
+            className="w-[40vw] h-[25vh] mx-auto my-5"
+          />
+          <p className="text-xl">{description}</p>
+        </motion.div>
+      ))}
+    </div>
     </div>
   );
 };

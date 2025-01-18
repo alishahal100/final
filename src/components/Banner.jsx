@@ -80,7 +80,7 @@ const Banner = () => {
 
                 
               <div classname="flex  flex-col ">
-                <h1 className="text-2xl ">Branding</h1>
+                <h1 className="text-2xl">Branding</h1>
                 <h2 className="text-xl">services</h2>
               </div>
               <div classname="flex  flex-col ">
