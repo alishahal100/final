@@ -88,15 +88,34 @@ const Section = ({
 };
 
 const Services = () => {
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const videoRef = useRef(null);
 
-  const handleShowReelClick = () => {
-    setIsVideoPlaying(true);
-  };
+  useEffect(() => {
+    const video = videoRef.current;
 
-  const handleVideoClose = () => {
-    setIsVideoPlaying(false);
-  };
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play();
+        } else {
+          video.pause();
+        }
+      },
+      {
+        threshold: 0.5, // Trigger when 50% of the video is in view
+      }
+    );
+
+    if (video) {
+      observer.observe(video);
+    }
+
+    return () => {
+      if (video) {
+        observer.unobserve(video);
+      }
+    };
+  }, []);
   return (
     <div className="w-screen mt-10 overflow-hidden">
       <Helmet>
@@ -107,31 +126,16 @@ const Services = () => {
         />
       </Helmet>
 
-      <div className="hidden lg:flex w-full flex-col justify-center align-center">
-        <div
-          className="lg:w-[70vw] lg:h-[60vh] w-[80vw] h-[20vh] rounded-3xl border-[7px] mx-auto border-[#e4d48c] lg:border-none lg:bg-[url('/Layer.jpg')] bg-cover bg-center"
-          onClick={handleShowReelClick}
-          style={{ position: "relative", cursor: "pointer" }}
-        >
-          <img
-            src="/group.svg"
-            className="w-[30vw] -mt-5 h-[20vh] lg:w-[80vw] lg:h-[50vh] mx-auto my-auto"
-            alt="show reel"
+      <div className="relative lg:w-[90vw] lg:h-[60vh] w-[100vw] h-[20vh] mx-auto">
+          <video
+            ref={videoRef}
+            src="/video/showreel.mp4"
+            className="w-full h-full rounded-3xl"
+            muted
+            playsInline
           />
-          {isVideoPlaying && (
-            <div
-              className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-black/80 z-10"
-              onClick={handleVideoClose}
-            >
-              <video
-                src="/video/showreel.mp4"
-                controls
-                autoPlay
-                className="w-full h-full rounded-3xl"
-              />
-            </div>
-          )}
         </div>
+      <div className="hidden lg:flex w-full flex-col justify-center align-center">
 
         {/* Define Section */}
         <Section
@@ -184,7 +188,7 @@ const Services = () => {
           reverse={false}
         />
       </div>
-      <div className="space-y-28 text-[#e4d48c]">
+      <div className="space-y-28 lg:hidden mt-10 text-[#e4d48c]">
       {[
         {
           title: "Define",
