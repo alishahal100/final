@@ -13,7 +13,7 @@ const About = () => {
           content="Show the world what your business is made of. Shabzalio customizes a company’s online experience through digital masterpieces, powerful online platforms, and storytelling through marketing campaigns across major media channels."
         />
       </Helmet>
-      <div className=" hidden  lg:flex lg:flex-col lg:gap-3 items-center justify-center text-[#e4d48c]">
+      <div className=" hidden  lg:flex lg:flex-col lg:gap-3 items-center justify-center  text-[#e4d48c]">
         <p className=" text-2xl lg:text-4xl font-black ">
           Show the world what your business is made of
         </p>
@@ -23,7 +23,7 @@ const About = () => {
           through marketing campaigns across major media channels.
         </p>
       </div>
-      <div className=" lg:hidden flex flex-col gap-10 mt-[80px] items-center justify-center text-[#e4d48c]">
+      <div className=" lg:hidden flex flex-col gap-10 mt-[40px] items-center justify-center text-[#e4d48c]">
         <p className=" text-2xl  font-bold">
           Show the world what your <br /> business is made of
         </p>

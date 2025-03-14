@@ -92,30 +92,27 @@ const Services = () => {
 
   useEffect(() => {
     const video = videoRef.current;
+     
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          video.play();
-        } else {
-          video.pause();
-        }
-      },
-      {
-        threshold: 0.5, // Trigger when 50% of the video is in view
-      }
-    );
-
-    if (video) {
-      observer.observe(video);
-    }
-
-    return () => {
-      if (video) {
-        observer.unobserve(video);
+    const handleIntersection = ([entry]) => {
+      if (entry.isIntersecting) {
+        video.play().catch((err) => console.error("Error playing video:", err));
+      } else {
+        video.pause();
       }
     };
+
+    const observer = new IntersectionObserver(handleIntersection, {
+      threshold: 0.5, // Trigger when 50% of the video is visible
+    });
+
+    observer.observe(video);
+
+    return () => {
+      observer.disconnect();
+    };
   }, []);
+
   return (
     <div className="w-screen mt-10 overflow-hidden">
       <Helmet>
@@ -129,13 +126,13 @@ const Services = () => {
       <div className="relative lg:w-[90vw] lg:h-[60vh] w-[100vw] h-[20vh] mx-auto">
           <video
             ref={videoRef}
-            src="/video/showreel.mp4"
+            src="/showreel.mp4"
             className="w-full h-full rounded-3xl"
-            muted
+            
             playsInline
           />
         </div>
-      <div className="hidden lg:flex w-full flex-col justify-center align-center">
+      <div className="hidden xl:flex w-full flex-col justify-center align-center">
 
         {/* Define Section */}
         <Section
@@ -179,16 +176,9 @@ const Services = () => {
           reverse={true}
         />
 
-        <Section
-          title="Capture"
-          description="where stories become art"
-          imgSrc="/capture.svg"
-          content1="Turning stories into visual art"
-          content2="through video and photography"
-          reverse={false}
-        />
+        
       </div>
-      <div className="space-y-28 lg:hidden mt-10 text-[#e4d48c]">
+      <div className="space-y-28 xl:hidden mt-10 text-[#e4d48c]">
       {[
         {
           title: "Define",
@@ -248,7 +238,7 @@ const Services = () => {
           <img
             src={imgSrc}
             alt={imgAlt}
-            className="w-[40vw] h-[25vh] mx-auto my-5"
+            className="w-[50vw] h-[25vh] md:h-[38vh] lg:h-[45vh] mx-auto my-5"
           />
           <p className="text-xl">{description}</p>
         </motion.div>

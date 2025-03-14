@@ -19,7 +19,7 @@ const Navbar = () => {
                 </div>
 
                 {/* Desktop Nav Links */}
-                <div className="hidden lg:block -ml-8 font-extrabold">
+                <div className="hidden xl:block -ml-8 font-extrabold">
                     <ul className="flex space-x-4">
                         <li><a href="/">Home</a></li>
                         <li><a href="https://shabzalio.myportfolio.com" target='_blank'>Portfolio</a></li>
@@ -28,9 +28,9 @@ const Navbar = () => {
                 </div>
 
                 {/* Desktop WhatsApp Chat */}
-                <div className="right-2 relative hidden lg:block">
+                <div className="right-2 relative hidden xl:block">
                     <a
-                        href="https://wa.me/917510622616"
+                        href="https://wa.me/+917510622616"
                         target='_blank'
                         className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#25D366] hover:bg-[#1caa52]"
                     >
@@ -40,7 +40,7 @@ const Navbar = () => {
                 </div>
 
                 {/* Mobile Hamburger Icon */}
-                <div className="lg:hidden flex items-center mr-5">
+                <div className="xl:hidden flex items-center mr-5">
                     <button
                         onClick={toggleMobileMenu}
                         className="text-[#e4d48c] px-4 py-2 border border-[#e4d48c] rounded"
@@ -52,7 +52,7 @@ const Navbar = () => {
 
             {/* Mobile Sliding Menu */}
             <div
-                className={`lg:hidden fixed top-0 right-0 h-full w-3/4 bg-black text-[#e4d48c] transform ${
+                className={`xl:hidden fixed top-0 right-0 h-full w-3/4 bg-black text-[#e4d48c] transform ${
                     isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
                 } transition-transform duration-300 ease-in-out z-40`}
             >
@@ -79,14 +79,14 @@ const Navbar = () => {
                         </a>
                     </li>
                     <li>
-                        <a
+                        {/* <a
                             href="https://wa.me/917510622616"
                             target='_blank'
                             className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#25D366] hover:bg-[#1caa52] mt-4"
                         >
                             <img src="/whatsapp.svg" alt="WhatsApp" className="w-6 h-6" />
                             <span className="text-black font-extrabold">WhatsApp Chat</span>
-                        </a>
+                        </a> */}
                     </li>
                 </ul>
             </div>

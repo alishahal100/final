@@ -22,13 +22,14 @@ const Home = () => {
 
       {/* WhatsApp Floating Icon */}
       <a
-        href="https://wa.me/1234567890" // Replace with your WhatsApp number (format: wa.me/{number without +})
+        href="https://wa.me/+917510622616" // Replace with your WhatsApp number (format: wa.me/{number without +})
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-20 right-10 z-50 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition duration-300"
+        className="fixed bottom-20 lg:hidden right-10 z-50 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition duration-300"
       >
         <FaWhatsapp size={24} />
       </a>
+
     </main>
   );
 }
